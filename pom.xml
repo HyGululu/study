@@ -38,7 +38,28 @@
             <artifactId>lombok</artifactId>
             <version>1.18.12</version>
         </dependency>
-    </dependencies>
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.75</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<!-- 模板引擎
+		https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-freemarker -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+
+
+
+
+
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -46,7 +67,32 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+		<!-- 配置将哪些资源文件(静态文件/模板文件/mapper文件)加载到tomcat输出目录里 -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory><!--java文件的路径-->
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+				<!-- <filtering>false</filtering>-->
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory><!--资源文件的路径-->
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+				<!-- <filtering>false</filtering>-->
+			</resource>
+		</resources>
 	</build>
 
 </project>
